@@ -1,0 +1,24 @@
+{
+  "name": "pet-project",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass -w sass -o css",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kbuchinskiy/pet-project.git"
+  },
+  "author": "k.buchinskiy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kbuchinskiy/pet-project/issues"
+  },
+  "homepage": "https://github.com/kbuchinskiy/pet-project#readme",
+  "dependencies": {
+    "node-sass": "^4.11.0",
+    "node-static": "^0.7.11"
+  }
+}
