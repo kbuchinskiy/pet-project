@@ -1,5 +1,6 @@
 // product list
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700");
+@import "../node_modules/reset-css/reset.css";
 
 #app {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
@@ -8,13 +9,21 @@
 
 button {
   box-sizing: border-box;
-  padding: 5px 20px;
   background: #fff;
   border: 1px solid #999;
   outline: 0;
   cursor: pointer;
 
   transition: transfrom 0.3s;
+
+  &.icon-button {
+    width: 25px;
+    height: 25px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+  }
 }
 
 button:active {
@@ -22,6 +31,7 @@ button:active {
 }
 
 header {
+  z-index: 10;
   position: fixed;
   top: 0;
   left: 0;
@@ -34,13 +44,18 @@ header {
   padding: 0 5%;
   border-bottom: 1px solid #000;
   background: #fff;
-}
 
-#openCartPopupBtn {
-  width: 40px;
-  height: 40px;
-  background: url(../media/images/cart-icon.png) center/contain no-repeat;
-  border: none;
+  .total-price-output {
+    margin-right: 20px;
+    font-size: 20px;
+  }
+
+  #openCartPopupBtn {
+    width: 40px;
+    height: 40px;
+    background: url(../media/images/cart-icon.png) center/contain no-repeat;
+    border: none;
+  }
 }
 
 #cartPopup {
@@ -49,18 +64,71 @@ header {
   left: auto;
   right: 5%;
   width: 600px;
-  height: 453px;
+  height: 460px;
   box-sizing: border-box;
   background: #fff;
   border: 1px solid #000;
   display: none;
+
+  &.opened {
+    display: block;
+  }
+  .cart-body {
+    padding: 5%;
+
+    .cart-list {
+      overflow-y: auto;
+      max-height: 300px;
+      box-sizing: border-box;
+      padding-right: 15px;
+
+      .cart-item {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 10px 0;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #999;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        button[data-action="delete"] {
+          margin-right: 10px;
+          width: 20px;
+          height: 20px;
+          background-image: url(../media/images/delete-icon.png);
+        }
+
+        .cart-item-title {
+          min-width: 270px;
+        }
+
+        .controls-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 80px;
+
+          button[data-action="remove"] {
+            background-image: url(../media/images/minus-icon.png);
+          }
+
+          button[data-action="add"] {
+            background-image: url(../media/images/plus-icon.png);
+          }
+        }
+
+        .cart-item-total-price {
+          margin-left: auto;
+        }
+      }
+    }
+  }
 }
 
-#cartPopup.opened {
-  display: block;
-}
-
-.products-list {
+.product-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -77,17 +145,52 @@ header {
     box-shadow: 2px 2px 2px 2px rgba($color: #000000, $alpha: 0.3);
 
     .product-image {
-      display: block;
-      width: 100%;
+      position: relative;
+
+      img {
+        display: block;
+        width: 100%;
+      }
+
+      figcaption {
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 3% 5%;
+        background: rgba($color: #a3a3a3, $alpha: 0.5);
+
+        .product-title,
+        .product-price {
+          font-size: 20px;
+        }
+      }
     }
 
-    .product-info {
+    .controls-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
       box-sizing: border-box;
       padding: 5%;
 
-      .buttons-container {
-        display: flex;
-        justify-content: space-between;
+      .product-amount {
+        font-size: 20px;
+      }
+
+      button {
+        width: 40px;
+        height: 40px;
+
+        &[data-action="add"] {
+          background-image: url(../media/images/plus-icon.png);
+        }
+        &[data-action="remove"] {
+          background-image: url(../media/images/minus-icon.png);
+        }
       }
     }
   }

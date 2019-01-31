@@ -1,17 +1,13 @@
 function render() {
   var app = document.getElementById("app");
-  app.appendChild(generateProductsList());
+  fillProductListElem();
 }
 
-function generateProductsList() {
-  var productsListElem = document.createElement("DIV");
-  productsListElem.classList.add("products-list");
-
+function fillProductListElem() {
   data.forEach(product => {
     var productElem = createProductElem(product);
-    productsListElem.appendChild(productElem);
+    productList.appendChild(productElem);
   });
-  return productsListElem;
 }
 
 function createProductElem(productData) {
@@ -19,10 +15,11 @@ function createProductElem(productData) {
     .getElementById("prouctItemTemplate")
     .content.cloneNode(true);
 
+  productElem.querySelector(".product-item").dataset.productId = productData.id;
   productElem.querySelector(".product-title").innerText = productData.title;
   productElem.querySelector(".product-price").innerText =
     productData.price + " $";
-  productElem.querySelector(".product-image").src = productData.image;
+  productElem.querySelector(".product-image img").src = productData.image;
 
   return productElem;
 }

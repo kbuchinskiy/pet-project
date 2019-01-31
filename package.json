@@ -19,6 +19,7 @@
   "homepage": "https://github.com/kbuchinskiy/pet-project#readme",
   "dependencies": {
     "node-sass": "^4.11.0",
-    "node-static": "^0.7.11"
+    "node-static": "^0.7.11",
+    "reset-css": "^4.0.1"
   }
 }

@@ -15,29 +15,54 @@
   <body>
     <div id="app">
       <header>
+        <p class="total-price-output"><span>0</span> $</p>
         <button id="openCartPopupBtn"></button>
-        <div id="cartPopup"></div>
+        <div id="cartPopup" class="opened">
+          <section class="cart-body">
+            <div class="cart-list">
+            </div>
+          </section>
+        </div>
       </header>
+
+      <section class="product-list"></section>
     </div>
 
     <!-- templates -->
     <template id="prouctItemTemplate">
-      <div class="product-item">
-        <img src="" class="product-image" alt="product image" />
-        <div class="product-info">
-          <h2 class="product-title"></h2>
-          <p class="product-price"></p>
-          <p class="product-amount">Amount: <span>0</span></p>
-          <div class="buttons-container">
-            <button class="product-add-btn">Add</button>
-            <button class="product-remove-btn">Remove</button>
-          </div>
+      <article class="product-item">
+        <figure class="product-image">
+          <img src="" alt="product image">
+          <figcaption>
+            <span class="product-title"></span>
+            <span class="product-price"></span>
+          </figcaption>
+        </figure>
+        <section class="controls-container">
+            <button class="icon-button" data-action="add"></button>
+            <p class="product-amount"><span>0</p>
+            <button class="icon-button" data-action="remove"></button>
+        </section>
+      </article>
+    </template>
+
+    <template id="cartItemTemplate">
+      <div class="cart-item">
+        <button class="icon-button" data-action="delete"></button>
+        <p class="cart-item-title"></p>
+        <div class="controls-container">
+          <button class="icon-button" data-action="add"></button>
+          <p class="cart-item-amount"></p>
+          <button class="icon-button" data-action="remove"></button>
         </div>
+        <p class="cart-item-total-price"></p>
       </div>
     </template>
 
     <script src="js/index.js"></script>
     <script src="js/render.js"></script>
     <script src="js/dom.js"></script>
+    <script src="js/cartDom.js"></script>
+    <script src="js/cart.js"></script>
   </body>
 </html>
