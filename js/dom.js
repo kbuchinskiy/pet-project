@@ -14,23 +14,26 @@ function toggleCartPopup(e) {
 function handleProductClick(e) {
   var productId,
     productToUpdate,
-    isButton = e.target.dataset.action;
+    isButton = e.target.hasAttribute("data-action"),
+    action;
 
   if (isButton) {
+    action = e.target.getAttribute("data-action");
     productId = e.target.closest("[data-product-id]").dataset.productId;
 
     productToUpdate = getProductFromData(productId);
 
-    if (e.target.dataset.action === "add") {
-      cart.addProductItem(productToUpdate);
-    } else if (e.target.dataset.action === "remove") {
-      cart.removeProductItem(productToUpdate);
-    } else if (e.target.dataset.action === "delete") {
-      cart.deleteProduct(productId);
+    switch (action) {
+      case "add":
+        addCartItem(productId, productToUpdate);
+        break;
+      case "remove":
+        removeCartItem(productId, productToUpdate, false);
+        break;
+      case "delete":
+        removeCartItem(productId, productToUpdate, true);
     }
-
-    updateProductElem(productId);
-    updateCartProductElem(productId);
+    
     updateTotalPrice();
   }
 }
@@ -70,4 +73,22 @@ function updateProductElem(productId) {
 function updateTotalPrice() {
   document.querySelector("header .total-price-output span").innerText =
     cart.total;
+}
+
+function addCartItem(productId, productToUpdate) {
+  cart.addProductItem(productToUpdate);
+  updateProductElem(productId);
+  updateCartProductElem(productId);
+}
+
+function removeCartItem(productId, productToUpdate, deleteProduct) {
+  if (cart.hasProduct(productId)) {
+    if (deleteProduct) {
+      cart.deleteProduct(productId);
+    } else {
+      cart.removeProductItem(productToUpdate);
+    }
+    updateProductElem(productId);
+    updateCartProductElem(productId);
+  }
 }

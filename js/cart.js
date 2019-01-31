@@ -1,6 +1,9 @@
 var cart = {
   products: [],
   total: 0,
+  isEmpty() {
+    return this.products.find.length === 0;
+  },
   addProductItem(productToUpdate) {
     if (!this.hasProduct(productToUpdate.id)) {
       productToUpdate.amount = 1;

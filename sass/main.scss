@@ -74,11 +74,20 @@ header {
     display: block;
   }
   .cart-body {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: flex-end;
     padding: 5%;
+
+    button[data-action="clear"] {
+      margin-top: 45px;
+    }
 
     .cart-list {
       overflow-y: auto;
-      max-height: 300px;
+      height: 330px;
+      width: 100%;
       box-sizing: border-box;
       padding-right: 15px;
 

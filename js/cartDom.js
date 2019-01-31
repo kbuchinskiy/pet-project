@@ -12,6 +12,17 @@ function addNewCartProductElem(productData) {
   cartList.appendChild(cartItemElem);
 }
 
+function getCartProductElem(productId) {
+  var elemToUpdate = cartList.querySelector(
+    ".cart-item[data-product-id=" + productId + "]"
+  );
+  return elemToUpdate;
+}
+
+function deleteNewCartProductElem(elemToDelete) {
+  cartList.removeChild(elemToDelete);
+}
+
 function updateCartProductElem(productId) {
   var updatedItem;
   elemToUpdate = getCartProductElem(productId);
@@ -25,15 +36,4 @@ function updateCartProductElem(productId) {
   } else {
     deleteNewCartProductElem(elemToUpdate);
   }
-}
-
-function getCartProductElem(productId) {
-  var elemToUpdate = cartList.querySelector(
-    ".cart-item[data-product-id=" + productId + "]"
-  );
-  return elemToUpdate;
-}
-
-function deleteNewCartProductElem(elemToDelete) {
-  cartList.removeChild(elemToDelete);
 }
