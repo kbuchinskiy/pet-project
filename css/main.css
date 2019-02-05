@@ -64,7 +64,7 @@ header {
     box-sizing: border-box;
     align-items: flex-end;
     padding: 5%; }
-    #cartPopup .cart-body button[data-action="clear"] {
+    #cartPopup .cart-body button[data-action="clear-cart"] {
       margin-top: 45px; }
     #cartPopup .cart-body .cart-list {
       overflow-y: auto;
