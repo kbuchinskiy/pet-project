@@ -1,3 +1,4 @@
+var app = app || {};
 var cart = {
   products: [],
   total: 0,
@@ -9,7 +10,7 @@ var cart = {
       productToUpdate.amount = 1;
       productToUpdate.totalPrice = productToUpdate.price;
       this.products.push(productToUpdate);
-      addNewCartProductElem(productToUpdate);
+      app.dom.addNewCartProductElem(productToUpdate);
     } else {
       this.products.forEach(existedProduct => {
         if (productToUpdate.id === existedProduct.id) {

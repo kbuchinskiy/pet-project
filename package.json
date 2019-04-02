@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "node-sass -w sass -o css",
-    "start": "node server.js"
+    "sass-watch": "node-sass sass -o css",
+    "start": "node server.js node-sass -w sass -o css"
   },
   "repository": {
     "type": "git",
